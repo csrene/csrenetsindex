@@ -10,6 +10,8 @@ services:
     - "${DB_HOST_PORT}:5432"
     environment:
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    volumes:
+    - ./db-data:/var/lib/postgresql/data
 
 
   adminer:

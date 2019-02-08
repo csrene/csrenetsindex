@@ -14,21 +14,6 @@ use actix_web::{client, HttpMessage};
 use futures::Future;
 
 
-
-
-pub fn create_password_list2(all_words: &Vec<String>, pw_word_count: usize, possible_words: usize) -> Vec<String> {
-
-    let random_words_vec: Vec<String> = (0..possible_words*pw_word_count).flat_map(|_| {
-        rand::thread_rng().choose(all_words)
-    }).map(|x| x.clone()).collect();
-
-    let words_vec: Vec<String> = random_words_vec
-        .chunks(pw_word_count).into_iter()
-        .map(|x| words_to_password(x.to_vec())).collect();
-
-    words_vec
-}
-
 pub fn create_password_list(all_words: &Vec<String>, pw_word_count: usize, n: usize) -> Vec<String> {
 
     let get_random_words_vec = ||{

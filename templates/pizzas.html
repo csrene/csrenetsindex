@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1337 password g3nerator</title>
+</head>
+<body>
+<style type="text/css">
+body {
+    font-family: cursive;
+}
+
+</style>
+
+<h1 style="text-align:center;color:#26b72b">Pizza Access Center</h1>
+
+<form action=/pizzas method=POST style="text-align:center">
+    <label>Customer E-mail
+        <input type="text" name="email"/><br/>
+    </label>
+    <label>Item
+        <input type="text" name="item"/><br/>
+    </label>
+    <label>Item Quantity
+        <input type="text" name="item_qt"/><br/>
+    </label>
+    <p><label>
+        <input type="submit" value="place an order">
+    </label></p>
+</form>
+
+<form action=/customer method=POST style="text-align:center">
+    <label>Customer E-mail
+        <input type="text" name="email"/><br/>
+    </label>
+    <label>Customer Name
+        <input type="text" name="name"/><br/>
+    </label>
+    <p><label>
+        <input type="submit" value="create new user">
+    </label></p>
+</form>
+
+
+<form style="text-align:center">
+    <label>Customer
+        <input type="text" name="customer"/><br/>
+    </label>
+    <p><label>
+        <input type="submit" value="check my orders">
+    </label></p>
+</form>
+
+
+<table>
+    <tr>
+        <th>Customer</th>
+        <th>Item</th>
+        <th>Quantity</th>
+    </tr>
+    {% for order in orders %}
+    <tr>
+        <td>{{ order.customer }}</td>
+        <td>{{ order.item }}</td>
+        <td>{{ order.item_qt }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

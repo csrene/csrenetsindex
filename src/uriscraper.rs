@@ -1,15 +1,13 @@
-//
-//
-use crate::config;
 use postgres::{Connection, TlsMode};
 use actix_web::{Result, HttpResponse, client, HttpRequest, HttpMessage};
-use scraper::Html;
-use scraper::Selector;
+use scraper::{Html, Selector};
 use futures::future::Future;
+
 use std::borrow::Cow;
 use std::fs::File;
-use std::io::BufReader;
-use std::io::Read;
+use std::io::{BufReader, Read};
+
+use crate::config;
 
 
 pub fn parse_body(raw_body: &str) -> Vec<String> {
@@ -84,8 +82,4 @@ fn get_words_from_file(file: &str) -> Vec<String> {
     let mut contents = String::new();
     buf_reader.read_to_string(&mut contents).expect("dang");
     parse_body(&contents)
-}
-
-fn main() {
-    scrape("google.com");
 }
